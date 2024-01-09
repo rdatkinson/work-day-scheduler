@@ -45,3 +45,10 @@ $(document).ready(function() {
     function saveEvent(hour, eventText) {
         localStorage.setItem(`event-${hour}`, eventText);
     }
+
+    // Function to load events from local storage
+    function loadEvents() {
+        for (let hour = 9; hour <= 17; hour++) {
+            $(`#hour-${hour} .description`).val(localStorage.getItem(`event-${hour}`));
+        }
+    }
