@@ -1,7 +1,7 @@
 # work-day-scheduler
 
 ## Description
-This project is a day planner designed for those in the workspace to be able to look at their day at a glance.
+This project is a day planner designed for those in the workspace to be able to look at their day at a glance. The deployed application can be viewed here: https://rdatkinson.github.io/work-day-scheduler/
 
 ## Installation
 N/A
