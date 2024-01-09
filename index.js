@@ -27,34 +27,34 @@ $(document).ready(function() {
     // Function to update time block colors
     function updateTimeBlockColors() {
         // Use a fake current hour for testing
-        // const currentHour = dayjs().hour(); // Comment this out for testing
-        const fakeCurrentHour = 12; // Change this value as needed for testing
-
-        // Commented out below for testing purposes ⬇️⬇️⬇️⬇️⬇️⬇️
-
-        // $(".time-block").each(function() {
-        //     let blockHour = parseInt($(this).attr("id").split("-")[1]);
-
-        //     if (blockHour < currentHour) {
-        //         $(this).find('.description').addClass("past").removeClass("present future");
-        //     } else if (blockHour === currentHour) {
-        //         $(this).find('.description').addClass("present").removeClass("past future");
-        //     } else {
-        //         $(this).find('.description').addClass("future").removeClass("past present");
-        //     }
-        // });
+        const currentHour = dayjs().hour(); // Comment this out for testing
+        // const fakeCurrentHour = 12; // Change this value as needed for testing
 
         $(".time-block").each(function() {
             let blockHour = parseInt($(this).attr("id").split("-")[1]);
-    
-            if (blockHour < fakeCurrentHour) {
+
+            if (blockHour < currentHour) {
                 $(this).find('.description').addClass("past").removeClass("present future");
-            } else if (blockHour === fakeCurrentHour) {
+            } else if (blockHour === currentHour) {
                 $(this).find('.description').addClass("present").removeClass("past future");
             } else {
                 $(this).find('.description').addClass("future").removeClass("past present");
             }
         });
+
+        // Test code below to check if time block colours change/are functioning correctly if viewing the application outside of business hours, for example 10pm ⬇️⬇️⬇️⬇️⬇️⬇️
+
+        // $(".time-block").each(function() {
+        //     let blockHour = parseInt($(this).attr("id").split("-")[1]);
+    
+        //     if (blockHour < fakeCurrentHour) {
+        //         $(this).find('.description').addClass("past").removeClass("present future");
+        //     } else if (blockHour === fakeCurrentHour) {
+        //         $(this).find('.description').addClass("present").removeClass("past future");
+        //     } else {
+        //         $(this).find('.description').addClass("future").removeClass("past present");
+        //     }
+        // });
     }
 
     // Function to save events to local storage
