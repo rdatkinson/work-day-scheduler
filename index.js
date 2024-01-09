@@ -40,3 +40,8 @@ $(document).ready(function() {
             }
         });
     }
+
+    // Function to save events to local storage
+    function saveEvent(hour, eventText) {
+        localStorage.setItem(`event-${hour}`, eventText);
+    }
