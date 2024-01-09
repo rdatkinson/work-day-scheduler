@@ -26,14 +26,30 @@ $(document).ready(function() {
 
     // Function to update time block colors
     function updateTimeBlockColors() {
-        const currentHour = dayjs().hour();
+        // Use a fake current hour for testing
+        // const currentHour = dayjs().hour(); // Comment this out for testing
+        const fakeCurrentHour = 12; // Change this value as needed for testing
+
+        // Commented out below for testing purposes ⬇️⬇️⬇️⬇️⬇️⬇️
+
+        // $(".time-block").each(function() {
+        //     let blockHour = parseInt($(this).attr("id").split("-")[1]);
+
+        //     if (blockHour < currentHour) {
+        //         $(this).find('.description').addClass("past").removeClass("present future");
+        //     } else if (blockHour === currentHour) {
+        //         $(this).find('.description').addClass("present").removeClass("past future");
+        //     } else {
+        //         $(this).find('.description').addClass("future").removeClass("past present");
+        //     }
+        // });
 
         $(".time-block").each(function() {
             let blockHour = parseInt($(this).attr("id").split("-")[1]);
-
-            if (blockHour < currentHour) {
+    
+            if (blockHour < fakeCurrentHour) {
                 $(this).find('.description').addClass("past").removeClass("present future");
-            } else if (blockHour === currentHour) {
+            } else if (blockHour === fakeCurrentHour) {
                 $(this).find('.description').addClass("present").removeClass("past future");
             } else {
                 $(this).find('.description').addClass("future").removeClass("past present");
@@ -52,3 +68,21 @@ $(document).ready(function() {
             $(`#hour-${hour} .description`).val(localStorage.getItem(`event-${hour}`));
         }
     }
+
+    // Event listener for save buttons
+    $(".container").on("click", ".saveBtn", function() {
+        let hour = $(this).parent().attr("id").split("-")[1];
+        let eventText = $(this).siblings(".description").val();
+        saveEvent(hour, eventText);
+    });
+
+
+    // Initialize the time blocks
+    createTimeBlocks();
+
+    // Load saved events
+    loadEvents();
+
+    // Update time block colors periodically
+    setInterval(updateTimeBlockColors, 1000 * 60); // Update every minute
+});
